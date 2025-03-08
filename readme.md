@@ -1,6 +1,6 @@
 # CS463 Final Project - Hunter Iddings
 
-## How to Run (Development Mode)
+## How to Run the project
 
 To run the project in development mode, use the following command:
 
