@@ -1,13 +1,16 @@
-@import "abstracts/functions";
-@import "abstracts/mixins";
-@import "abstracts/variables";
+@use "abstracts/functions";
+@use "abstracts/mixins";
+@use "abstracts/variables";
 
-@import "base/animations";
-@import "base/base";
-@import "base/typography";
+@use "base/animations";
+@use "base/base";
+@use "base/typography";
 
-// @import "components/";
+@use "components/btn-primary";
 
-// @import "layout/";
+@use "layout/header";
+@use "layout/mobilenav";
+@use "layout/section";
 
-@import "pages/home";
+
+@use "pages/home";

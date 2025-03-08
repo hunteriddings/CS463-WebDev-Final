@@ -1,0 +1,280 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mixin;
+@use "sass:color";
+
+.head {
+    width: 100%;
+    // position: fixed;
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include mixin.respond(tab-port)
+    {
+        position: fixed;
+    }
+
+}
+
+.header {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    z-index: 1;
+    background-color: var.$color-white;
+    padding: 2.5rem 1.5rem;
+
+    transition: all .4s;
+
+    
+
+    @include mixin.respond(tab-port)
+    {
+        padding: 1.5rem 1.85rem;
+    }
+
+    @include mixin.respond(tab-land) {
+        padding: 1.5rem 3.15rem;
+
+    }
+
+    &--scrolled {
+
+        @include mixin.respond(tab-port) {
+            margin: 0;
+            width: 100%;
+            border-radius: 0;
+            padding: 1.85rem 1.85rem;
+        }
+
+        @include mixin.respond(tab-land) {
+            padding: 2.45rem 3.95rem;
+        }
+    }
+
+    &__pre {
+        background-color: var.$color-blue;
+
+        display: flex;
+        flex-direction: column;
+
+        padding: 1rem 1.5rem;
+
+        @include mixin.respond(tab-port)
+        {
+            padding: 1rem 1.85rem;
+        }
+    
+        @include mixin.respond(tab-land) {
+            padding: 1.1rem 1.95rem;
+        }
+
+        &-link:link,
+        &-link:visited {
+            text-decoration: none;
+            font-size: 1.55rem;
+            font-weight: 600;
+            color: var.$color-white;
+            text-transform: uppercase;
+
+            
+        
+        }
+        &-icon {
+            margin-right: 1rem;
+        }
+    }
+
+    &__nav {
+        width: 100%;
+        display: flex;
+        //flex-direction: column;
+
+        &-logo {
+            margin-right: auto;
+            flex: 35%;
+            display: flex;
+            align-items: center;
+
+            @include mixin.respond(phone) {
+                flex: 30%;
+            }
+
+            @include mixin.respond(tab-port) {
+                flex: 20%;
+            }
+
+            @include mixin.respond(tab-land) {
+                flex: 10%;
+            }
+
+
+            &--link:link,
+            &--link:visited {
+                text-decoration: none;
+            }
+
+            &--img {
+                display: block;
+                width: 40%;
+
+                @include mixin.respond(tab-land) {
+                    width: 55%;
+                }
+
+                @include mixin.respond(big-desktop)
+                {
+                    width: 40%;
+                }
+            }
+        }
+
+        &-menu {
+
+            &--100 {
+                width: 100%;
+            }
+            
+            &--item {
+                padding: 1rem 1.85rem;
+                font-size: 1.7rem;
+            }
+        }
+
+        &-nav {
+            display: none;
+            visibility: hidden;
+
+            @include mixin.respond(tab-port) {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+                visibility: visible;
+                flex: 55%;
+            }
+
+            @include mixin.respond(tab-land) {
+                
+            }
+
+            &--list {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                list-style: none;
+
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+            }
+
+            &--item {
+                &:not(:last-child) {
+                    margin-right: 2rem;
+                }
+
+                @include mixin.respond(tab-land)
+                {
+                    &:not(:last-child) {
+                        margin-right: 2.85rem;
+                    }
+                }
+
+                @include mixin.respond(big-desktop)
+                {
+                    &:not(:last-child) {
+                        margin-right: 5.5rem;
+                    }
+                }
+                
+            }
+
+            &--link:link,
+            &--link:visited {
+                text-decoration: none;
+                font-size: 1.5rem;
+                color: var.$color-grey;
+                text-transform: uppercase;
+                font-weight: 500;
+                font-family: sans-serif;
+
+                background-image: linear-gradient(
+                    to right,
+                    var.$color-blue,
+                    color.adjust(var.$color-blue, $lightness: -15%) 50%,
+                    #000 50%
+                );
+                background-size: 200% 100%;
+                background-position: -100%;
+                display: inline-block;
+                padding: 5px 0;
+                position: relative;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                transition: all 0.3s ease-in-out;
+
+                @include mixin.respond(tab-land) {
+                    font-size: 1.75rem;
+                }
+
+                &:before {
+                    content: '';
+                    background: var.$color-blue;
+                    display: block;
+                    position: absolute;
+                    bottom: -3px;
+                    left: 0;
+                    width: 0;
+                    height: 3px;
+                    transition: all 0.3s ease-in-out;
+                }
+
+                &:hover {
+                    background-position: 0;
+                }
+
+                &:hover::before {
+                    width: 100%;
+                }
+            }
+
+            &--link:hover,
+            &--link:active {
+
+            }
+        }
+
+        &-contact {
+            flex: 70%;
+            display: flex;
+            
+            align-items: center;
+            justify-content: flex-end;
+
+            @include mixin.respond(phone) {
+                flex: 60%;
+            }
+
+            @include mixin.respond(tab-port) {
+                margin-left: 2rem;
+                flex: 0 1 auto;
+            }
+        }
+
+    }
+}
+
+        /* Custom CSS for hover dropdown */
+        .dropdown-menu {
+            display: none; /* Hide by default */
+        }
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        .dropdown-toggle::after {
+            display: none;
+        }
+

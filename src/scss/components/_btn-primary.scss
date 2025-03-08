@@ -1,0 +1,59 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mixin;
+@use "sass:color";
+
+.btn-primary:link,
+.btn-primary:visited {
+    text-decoration: none;
+    background-color: var.$color-blue;
+    color: var.$color-white;
+    padding: 1rem 3rem;
+    font-size: 1.45rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: 'Lato';
+    border-radius: 5rem;
+
+    transition: all .4s;
+
+    @include mixin.respond(tab-land)
+    {
+        font-size: 1.55rem;
+    }
+
+    @include mixin.respond(big-desktop)
+    {
+        font-size: 1.6rem;
+    }
+}
+
+.btn-primary--large {
+    font-size: 1.85rem !important;
+    padding: 2rem 4rem !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active {
+    background-color: color.adjust(var.$color-blue, $lightness: 10%);
+    
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    text-decoration: none;
+    font-family: 'Rubik';
+    background-color: transparent;
+    border: 3px solid var.$color-white;
+    color: var.$color-white;
+    border-radius: 5rem;
+    font-weight: 600;
+    font-family: 'Rubik';
+
+    transition: all .2s;
+}
+
+.btn-ghost:active,
+.btn-ghost:hover {
+    background-color: var.$color-blue;
+    border: 3px solid var.$color-blue;
+}

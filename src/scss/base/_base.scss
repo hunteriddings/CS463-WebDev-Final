@@ -1,3 +1,6 @@
+@use "../abstracts/variables" as var;
+
+
 *,
 *::after,
 *::before {
@@ -9,8 +12,62 @@
 html {
     // Defines 1rem
     font-size: 62.5%; // 10px
+    overflow-x: hidden;
+
 }
 
 body {
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+
 }
+
+.body {
+    background-color: #fafbfb;
+    background-repeat: repeat;
+    background-size: contain;
+}
+
+h1 {
+    font-size: 4rem;
+    color: var.$color-white;
+}
+
+h2 {
+    font-size: 2.75rem;
+    color: var.$color-white;
+}
+
+h5 {
+    color: var.$color-grey;
+    font-weight: 500;
+    line-height: 3.25rem;
+    font-size: 1.9rem;
+}
+
+h6 {
+    color: var.$color-white;
+    font-size: 2.2rem;
+}
+
+.root {
+    background-color: var.$color-white;
+    width: 100%;
+}
+
+hr {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.margin-top-2 {
+    margin-top: 2rem;
+}
+
+.margin-top-3 {
+    margin-top: 3rem;
+}
+

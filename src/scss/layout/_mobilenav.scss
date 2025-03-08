@@ -1,0 +1,98 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mixin;
+@use "sass:color";
+
+.mobilenav {
+    font: inherit;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    width: 100%;
+    background-color: var.$color-white;
+
+    border-top-left-radius: 2.55rem;
+    border-top-right-radius: 2.55rem;
+
+    z-index: 9998;
+    position: fixed;
+    bottom: 0;
+
+    @include mixin.respond(tab-port) {
+        display: none;
+        visibility: hidden;
+    }
+
+    &__nav {
+        width:100%;
+    }
+
+    &__list {
+
+        margin: 0;
+        padding: 0;
+        width:100%;
+        list-style: none;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__item {
+        padding: 1.75rem 0 ;
+        flex: 0 0 25%;
+        font-family: "Lato";
+        align-items: center;
+        text-align: center;
+        padding-bottom: calc(.5rem + env(safe-area-inset-bottom));
+
+        transition: all 0.4s;
+
+        &:hover,
+        &:active {
+            background-color: #c2c1c13d;
+        }
+
+        &:hover .mobilenav__icon-text,
+        &:active .mobilenav__icon-text {
+            
+            color: color.adjust(var.$color-blue, $lightness: -15%);
+            
+        }
+
+        &:hover .mobilenav__icon,
+        &:active .mobilenav__icon {
+            
+            fill: color.adjust(var.$color-blue, $lightness: -15%);
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: var.$color-grey;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+
+    &__icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        //fill: lighten(var.$color-black, 35%);
+        fill: color.adjust(var.$color-black, $lightness: 35%);
+
+        &-text {
+            font-size: 1.6rem;
+            font-weight: 500;
+            
+            color: color.adjust(var.$color-black, $lightness: 35%);
+
+            &-current {
+                color: var.$color-blue;
+            }
+        }
+
+        &-current {
+            fill: var.$color-blue;
+            color: var.$color-blue;
+        }
+    }
+}

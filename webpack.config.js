@@ -2,96 +2,111 @@ const path = require("path");
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyPlugin = require('copy-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
+const { webpack } = require("webpack");
+const TerserPlugin = require("terser-webpack-plugin");
+const postcssObfuscator = require("postcss-obfuscator");
 
-const isDevelopment = process.env.NODE_ENV === 'development';
+const isDevelopment = process.env.NODE_ENV === "development";
 
 module.exports = {
-    entry: './src/js/index.js',
+  entry: "./src/js/index.js",
 
-    output: {
-        filename: 'js/main.js',
-        path: path.resolve(__dirname, 'dist')
+  devtool: false,
+
+  output: {
+    filename: "js/[contenthash:8].js",
+    clean: true,
+    path: path.resolve(__dirname, "dist"),
+  },
+
+  devServer: {
+    host: "0.0.0.0",
+    port: 8080,
+  },
+
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin()],
+  },
+
+  resolve: {
+    fallback: {
+      querystring: require.resolve("querystring-es3"),
+      crypto: require.resolve("crypto-browserify"),
     },
+  },
 
-    devServer: {
-        contentBase: './dist',
-        writeToDisk: true,
-        port: 8080
-    },
+  module: {
+    rules: [
+      // HTML Loader
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: "html-loader",
+          },
+        ],
+        include: [path.resolve(__dirname, "node_modules/swiper")],
+      },
 
-    externals: {
-        jquery: 'jQuery'
-    },
-
-    module: {
-        rules: [
-
-            // HTML Loader
-            {
-                test: /\.html$/,
-                use: [
-                    {
-                        loader: "html-loader"
-                    }
-                ]
+      // CSS Loader
+      {
+        test: /\.s(a|c)ss$/,
+        use: [
+          isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+          },
+          {
+            loader: "sass-loader",
+            options: {
+              sourceMap: isDevelopment,
+              implementation: require("sass"),
             },
+          },
+        ],
+      },
 
-            // CSS Loader
-            {
-                test: /\.s(a|c)ss$/,
-                use: [
-                    isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
-                    "css-loader",
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: isDevelopment
-                        }
-                    }
-                ]
-            },
+      // Babel Loader
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+        },
+      },
 
-            // Image Loader
-            {
-                test: /\.(png|svg|jpg|jpeg)$/,
-                use: [
-                    {
-                        loader: "file-loader",
-                        options: {
-                            name: '[hash].[ext]',
-                            outputPath: 'img/'
-                        }
-                    }
-                ]
-            },
+      {
+        test: /\.svg$/,
+        use: ["@svgr/webpack"],
+      },
 
-            // Babel Loader
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                use: {
-                    loader: "babel-loader",
-                }
-            },
-
-        ]
-    },
-
-    plugins: [
-        new HtmlWebPackPlugin({
-            template: "./src/index.html",
-            filename: "index.html"
-        }),
-
-        new MiniCssExtractPlugin({
-            filename: 'css/style.css',
-        }),
-
-        new CopyPlugin({
-            patterns: [
-                { from : "./src/img/sprite.svg", to: 'img/' }
-            ]
-        }),
+      // Image/File Loader
+      {
+        test: /\.(png|jpg|gif|svg|eot|ttf|woff|webp|pdf|mp4)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            name: "img/[name][ext]",
+          },
+        },
+      },
     ],
+  },
+
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./src/index.html",
+      filename: "index.html",
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: "css/[name:8].css",
+    }),
+
+    new CopyPlugin({
+      patterns: [{ from: "./src/img/", to: "img/" }],
+    }),
+  ],
 };

@@ -1,11 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Webpack Setup</title>
-</head>
-<body>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" async></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Hunter Iddings - CS463 Final</title>
+  </head>
+  <body>
+    <main class="root">
+      <div class="head">
+        <section class="header">
+          <nav class="header__nav">
+            <div class="header__nav-logo">
+              <a href="/" class="header__nav--link">
+                <img
+                  class="header__nav-logo--img"
+                  src="./img/psu.jpg"
+                  alt="Image of user"
+                />
+              </a>
+            </div>
+            <div class="header__nav-nav">
+              <ul class="header__nav-nav--list">
+                <li class="header__nav-nav--item">
+                  <a href="#" class="header__nav-nav--link">About</a>
+                </li>
+                <li class="header__nav-nav--item">
+                  <a href="#" class="header__nav-nav--link">Experience</a>
+                </li>
+                <li class="header__nav-nav--item">
+                  <a href="#" class="header__nav-nav--link">Projects</a>
+                </li>
+                <li class="header__nav-nav--item">
+                  <a href="#" class="header__nav-nav--link">Contact</a>
+                </li>
+              </ul>
+            </div>
+            <div class="header__nav-contact">
+              <a href="#contact" class="btn-primary">Contact</a>
+            </div>
+          </nav>
+        </section>
+      </div>
+
+      <section class="section about" id="about">ABOUT</section>
+      <section class="section experience" id="experience">experience</section>
+      <section class="section projects" id="projects">projects</section>
+      <section class="section contact" id="contact">contact</section>
+
+      <section class="mobilenav">
+        <nav class="mobilenav__nav">
+          <ul class="mobilenav__list">
+            <li class="mobilenav__item mobilenav__item-current">
+              <a class="mobilenav__link" href="#about">
+                <div class="mobilenav__icon mobilenav__icon-current">
+                  <i class="fa-solid fa-circle-info fa-2xl"></i>
+                </div>
+                <p class="mobilenav__icon-text mobilenav__icon-text-current">
+                  About
+                </p>
+              </a>
+            </li>
+            <li class="mobilenav__item">
+              <a class="mobilenav__link" href="#experience">
+                <div class="mobilenav__icon">
+                  <i class="fa-solid fa-star fa-2xl"></i>
+                </div>
+                <p class="mobilenav__icon-text">Experience</p>
+              </a>
+            </li>
+            <li class="mobilenav__item">
+              <a class="mobilenav__link" href="#projects">
+                <div class="mobilenav__icon">
+                  <i class="fa-solid fa-list-check fa-2xl"></i>
+                </div>
+                <p class="mobilenav__icon-text">Projects</p>
+              </a>
+            </li>
+            <li class="mobilenav__item">
+              <a class="mobilenav__link" href="#contact">
+                <div class="mobilenav__icon">
+                  <i class="fa-regular fa-envelope fa-2xl"></i>
+                </div>
+                <p class="mobilenav__icon-text">Contact</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </main>
+  </body>
 </html>
