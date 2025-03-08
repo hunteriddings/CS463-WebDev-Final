@@ -2,6 +2,12 @@
 
 ## How to Run the project
 
+First, install required packages using:
+
+```bash
+npm install
+```
+
 To run the project in development mode, use the following command:
 
 ```bash
