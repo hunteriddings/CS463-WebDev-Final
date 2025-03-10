@@ -25,3 +25,11 @@ To build the project, use the following command:
 ```bash
 npm run build
 ```
+
+## Libraries Used
+
+- **Font Awesome**: For scalable vector icons that can be customized with CSS.
+- **Lato Font** (Google Fonts): A clean and modern sans-serif font used throughout the website.
+- **jQuery**: A fast, small, and feature-rich JavaScript library used for DOM manipulation and event handling.
+
+- **Bootstrap**: A popular front-end framework for building responsive and mobile-first websites.
