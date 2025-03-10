@@ -1,5 +1,5 @@
 @use "../abstracts/variables" as var;
-
+@use "../abstracts/mixins" as mixin;
 
 *,
 *::after,
@@ -13,6 +13,12 @@ html {
     // Defines 1rem
     font-size: 62.5%; // 10px
     overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 12rem;
+
+    @include mixin.respond(tab-land) {
+        scroll-padding-top: 16rem;
+    }
 
 }
 
@@ -33,12 +39,29 @@ body {
 
 h1 {
     font-size: 4rem;
-    color: var.$color-white;
+    color: var.$color-black;
+    text-transform: uppercase;
+    font-weight: 300;
+    margin-top: 2.5rem;
+
+    
+
+    &::after {
+        display: block;
+        height: 3px;
+        background-color: var.$color-blue;
+        content: " ";
+        width: 100px ;
+        margin-top: 12px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
 }
 
 h2 {
-    font-size: 2.75rem;
-    color: var.$color-white;
+    font-size: 2.25rem;
+    color: var.$color-grey;
 }
 
 h5 {

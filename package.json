@@ -47,7 +47,6 @@
     "libphonenumber-js": "^1.10.60",
     "querystring-es3": "^0.2.1",
     "regenerator-runtime": "^0.13.11",
-    "swiper": "^10.0.3",
     "url": "^0.11.3"
   }
 }

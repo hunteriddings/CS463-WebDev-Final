@@ -1,0 +1,77 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mixin;
+@use "sass:color";
+
+.about {
+    
+
+    &__card {
+        margin-top: 2rem;
+        width: 90%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        @include mixin.respond(tab-port) {
+            width: 80%;
+        }
+
+        
+        @include mixin.respond(tab-land) {
+            width: 70%;
+        }
+
+        @include mixin.respond(big-desktop) {
+            width: 50%;
+        }
+    }
+
+    &__hero {
+
+    }
+
+    &__img {
+        display: block;
+        width: 20rem;
+        height: 100%;
+        border-radius: 100%;
+    }
+
+    &__content {
+        margin: 1.5rem 0;
+    }
+
+    &__description {
+        text-align: center;
+    }
+
+    &__btns {
+        width: 100% !important;
+        margin: 3rem 0;
+
+        display: flex;
+        flex-direction: column;
+        
+        justify-content: center;
+
+        @include mixin.respond(tab-port) {
+            flex-direction: row;
+        }
+    }
+
+    &__btn {
+        width: 100%;
+        text-align: center !important;
+
+        &:not(:last-child) {
+            margin-bottom: 1rem;
+
+            @include mixin.respond(tab-port) {
+                margin-bottom: 0;
+                margin-right: 8px;
+            }
+        }
+    }
+}

@@ -1,0 +1,85 @@
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as mixin;
+@use "sass:color";
+
+.contact {
+    width: 100%;
+
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__section {
+        width: 95%;
+
+        @include mixin.respond(tab-port) {
+            width: 75% ;
+        }
+    
+        @include mixin.respond(tab-land) {
+            width: 70% ;
+        }
+    
+        @include mixin.respond(big-desktop) {
+            width: 55%;
+        }
+    }
+
+    &__header {
+        font-family: inherit;
+        font-weight: 500;
+        font-size: 2.25rem;
+        color: var.$color-grey;
+        
+        &::after {
+            display: block;
+            height: 3px;
+            background-color: var.$color-blue;
+            content: " ";
+            width: 100px ;
+            margin-top: 12px;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+    }
+
+    &__form {
+        margin-top: 2rem;
+        width: 100%;
+
+        &-label {
+            font-size: 1.85rem ;
+            font-weight: 600 ;
+
+            &--sub {
+                font-size: 1.55rem ;
+                color: #7a7a7a ;
+            }
+        }
+
+        &-input {
+            padding: 1.2rem 1.2rem;
+            font-size: 1.45rem ;
+        }
+
+        &-btn {
+            background-color: var.$color-blue;
+            border-color: var.$color-blue ;
+            width: 100% ;
+            font-size: 1.65rem ;
+            font-weight: 600;
+            padding: 1.2rem 1.2rem;
+
+            border-radius: 10rem ;
+        }
+    }
+}
+
+    /* Red asterisk for required fields */
+.required::after {
+    content: " *" ;
+    color: rgb(230, 8, 8);
+}
+  
