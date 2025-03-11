@@ -1,0 +1,42 @@
+@use "../abstracts/mixins" as mixin;
+
+.experience {
+    margin: 4rem 0;
+    height: auto !important;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__item {
+        width: 95%;
+        font-size: 1.6rem;
+
+        &:not(:last-child){
+            margin-bottom: 1.5rem;
+        }
+
+        @include mixin.respond(tab-port)
+        {
+            width: 80%;
+        }
+
+        @include mixin.respond(tab-land)
+        {
+            width: 65%;
+        }
+
+    }
+
+    &__list,
+    &__date {
+        margin-top: 1.5rem;
+    }
+
+    &__list {
+        &-item:not(:last-child) {
+            margin-bottom: 8px;
+        }  
+    }
+
+}

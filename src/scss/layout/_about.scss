@@ -3,7 +3,8 @@
 @use "sass:color";
 
 .about {
-    
+    margin: 4rem 0;
+    height: auto !important;
 
     &__card {
         margin-top: 2rem;
@@ -28,9 +29,6 @@
         }
     }
 
-    &__hero {
-
-    }
 
     &__img {
         display: block;
