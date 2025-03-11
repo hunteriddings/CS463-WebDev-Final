@@ -1,5 +1,9 @@
 # CS463 Final Project - Hunter Iddings
 
+## Live Deployment URL:
+
+https://hunteriddings.github.io/CS463-WebDev-Final/dist/
+
 ## How to Run the project
 
 First, install required packages using:
